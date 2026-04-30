@@ -482,27 +482,15 @@
       const phone = '+1' + raw;
 
       try {
-        const res = await fetch('https://api.bland.ai/v1/calls', {
+        const res = await fetch('http://72.62.161.160:5500/call', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'authorization': 'org_6679ad196048f7fb74e9fcb4e8a876ca7f298b0975d76ada7d026096e734145ce5dcf9b52a15c8aca7f169'
-          },
-          body: JSON.stringify({
-            phone_number: phone,
-            from: '+14156609459',
-            task: 'You are Sharon Cash, a warm and professional AI funding advisor for Town Mayor Financial. Your job is to qualify this prospect for business credit and funding. Ask: (1) How long have they been in business? (2) What is their approximate monthly revenue? (3) What type of funding are they looking for? If they qualify (6+ months in business, any revenue), tell them a specialist named Shake will follow up with their personalized funding roadmap within 24 hours. Be warm, confident, and concise. Keep the call under 5 minutes.',
-            voice: '78982ab1-6a3f-4320-97f5-73bdb853f73d',
-            wait_for_greeting: false,
-            record: true,
-            max_duration: 8,
-            answered_by_enabled: false
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone })
         });
 
         const data = await res.json();
 
-        if (data.status === 'success' || data.call_id) {
+        if (data.ok || data.call_id) {
           btn.textContent = '✅ Sharon is calling you now!';
           statusEl.className = 'status-msg success';
           statusEl.style.display = 'block';
@@ -515,7 +503,7 @@
         btn.textContent = '📞 Have Sharon Call Me Now';
         statusEl.className = 'status-msg error';
         statusEl.style.display = 'block';
-        statusEl.textContent = 'Something went wrong. Call Sharon directly: (415) 660-9459';
+        statusEl.textContent = 'Something went wrong. Call Sharon directly: (415) 360-1544';
       }
     }
   </script>
