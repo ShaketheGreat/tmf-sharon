@@ -3,110 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Town Mayor Financial | Meet Sharon</title>
+  <title>Town Mayor Financial | Business Funding Qualifier</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #0a0a0f;
+      background: #080810;
       color: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
+      padding: 0 16px 40px;
     }
 
     /* Brand bar */
     .brand {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      max-width: 520px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(10,10,15,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(8,8,16,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,168,75,0.12);
       z-index: 100;
+      margin-bottom: 32px;
     }
 
     .brand-logo {
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
-      border: 2px solid rgba(200,168,75,0.4);
+      border: 1.5px solid rgba(200,168,75,0.5);
     }
-
-    .brand-logo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
 
     .brand-name {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       color: #fff;
       letter-spacing: -0.2px;
     }
-
     .brand-tag {
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
+      font-size: 10.5px;
+      color: rgba(200,168,75,0.7);
       margin-top: 1px;
+      letter-spacing: 0.3px;
     }
 
     /* Main card */
     .card {
-      margin-top: 80px;
       max-width: 480px;
       width: 100%;
-      text-align: center;
     }
 
-    .badge {
+    /* Live badge */
+    .live-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.3);
-      color: #c8a84b;
+      gap: 7px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #22c55e;
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 5px 13px;
       border-radius: 20px;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
-
-    .badge::before {
-      content: '';
+    .live-dot {
       width: 6px; height: 6px;
-      background: #c8a84b;
+      background: #22c55e;
       border-radius: 50%;
-      animation: pulse 2s infinite;
+      animation: blink 1.6s ease-in-out infinite;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
 
     h1 {
-      font-size: clamp(28px, 6vw, 40px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.8px;
+      font-size: clamp(26px, 6vw, 38px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1px;
       color: #fff;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-
-    h1 span {
-      background: linear-gradient(90deg, #c8a84b, #e8c96a);
+    h1 .gold {
+      background: linear-gradient(90deg, #c8a84b, #f0d878);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -114,109 +104,191 @@
 
     .subtitle {
       font-size: 15px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-      max-width: 360px;
-      margin: 0 auto 36px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 380px;
     }
 
     /* Agent card */
     .agent-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 28px 24px;
+      background: linear-gradient(135deg, rgba(200,168,75,0.07), rgba(200,168,75,0.02));
+      border: 1px solid rgba(200,168,75,0.2);
+      border-radius: 18px;
+      padding: 22px 20px;
       margin-bottom: 28px;
       display: flex;
       align-items: center;
-      gap: 18px;
-      text-align: left;
+      gap: 16px;
     }
 
     .agent-avatar {
-      width: 56px; height: 56px;
-      border-radius: 14px;
+      width: 54px; height: 54px;
+      border-radius: 12px;
       overflow: hidden;
       flex-shrink: 0;
       position: relative;
-      border: 2px solid rgba(200,168,75,0.3);
+      border: 2px solid rgba(200,168,75,0.35);
     }
-
-    .agent-avatar img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-
+    .agent-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .agent-avatar::after {
       content: '';
       position: absolute;
-      bottom: -2px; right: -2px;
-      width: 14px; height: 14px;
+      bottom: -1px; right: -1px;
+      width: 13px; height: 13px;
       background: #22c55e;
       border-radius: 50%;
-      border: 2.5px solid #0a0a0f;
+      border: 2px solid #080810;
     }
 
     .agent-name {
       font-size: 17px;
-      font-weight: 700;
+      font-weight: 800;
       color: #fff;
       margin-bottom: 2px;
+      letter-spacing: -0.3px;
     }
-
     .agent-title {
       font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 6px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 5px;
     }
-
     .agent-status {
       font-size: 12px;
       color: #22c55e;
-      display: flex; align-items: center; gap: 5px;
+      font-weight: 600;
     }
 
-    .agent-status::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: #22c55e;
-      border-radius: 50%;
-    }
-
-    /* CTA button */
-    .cta-btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, #c8a84b, #a8881f);
-      color: #0a0a0f;
-      font-size: 16px;
-      font-weight: 700;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
-      letter-spacing: -0.2px;
+    /* Input + Button section */
+    .call-form {
       margin-bottom: 14px;
     }
 
-    .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .cta-btn:active { transform: translateY(0); }
-
-    .cta-sub {
+    .input-label {
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 36px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
+    .phone-input {
+      width: 100%;
+      padding: 15px 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .phone-input::placeholder { color: rgba(255,255,255,0.25); font-weight: 400; font-size: 15px; }
+    .phone-input:focus { border-color: rgba(200,168,75,0.5); }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg, #c8a84b 0%, #a8881f 100%);
+      color: #0a0805;
+      font-size: 16px;
+      font-weight: 800;
+      border: none;
+      border-radius: 13px;
+      cursor: pointer;
+      letter-spacing: -0.2px;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(200,168,75,0.25);
+    }
+    .cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .cta-btn:active { transform: translateY(0); opacity: 1; }
+    .cta-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .cta-sub {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.28);
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Status message */
+    .status-msg {
+      display: none;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .status-msg.success {
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #22c55e;
+    }
+    .status-msg.error {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: #ef4444;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.15);
+      font-size: 11px;
+      margin: 16px 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Secondary CTA */
+    .secondary-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 36px;
+    }
+    .secondary-btn:hover { border-color: rgba(200,168,75,0.35); color: #c8a84b; }
+
     /* Steps */
+    .steps-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
     .steps {
-      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 40px;
+      gap: 14px;
+      margin-bottom: 32px;
     }
 
     .step {
@@ -226,12 +298,12 @@
     }
 
     .step-num {
-      width: 28px; height: 28px;
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.25);
+      width: 26px; height: 26px;
+      background: rgba(200,168,75,0.1);
+      border: 1px solid rgba(200,168,75,0.2);
       color: #c8a84b;
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
@@ -239,127 +311,122 @@
     }
 
     .step-text {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.5;
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
     }
-
     .step-text strong {
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.85);
       display: block;
-      margin-bottom: 2px;
-      font-weight: 600;
+      margin-bottom: 1px;
+      font-weight: 700;
     }
 
     /* Pills */
     .pills {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
-
     .pill {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      display: flex; align-items: center; gap: 5px;
+      padding: 6px 13px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.4);
     }
 
     /* Footer */
     footer {
-      font-size: 11px;
-      color: rgba(255,255,255,0.2);
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.18);
       text-align: center;
-      padding-bottom: 24px;
     }
-
-    footer a {
-      color: rgba(200,168,75,0.6);
-      text-decoration: none;
-    }
-
+    footer a { color: rgba(200,168,75,0.5); text-decoration: none; }
     footer a:hover { color: #c8a84b; }
-
-    /* Phone link */
-    .phone-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.55);
-      font-size: 14px;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 10px 18px;
-      margin-bottom: 28px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .phone-link:hover { border-color: rgba(200,168,75,0.4); color: #c8a84b; }
   </style>
 </head>
 <body>
 
   <!-- Brand bar -->
   <div class="brand">
-    <div class="brand-logo"><img src="logo.jpg" alt="TMF Logo" /></div>
+    <div class="brand-logo"><img src="logo.jpg" alt="TMF" /></div>
     <div>
       <div class="brand-name">Town Mayor Financial</div>
-      <div class="brand-tag">Business Credit Consulting</div>
+      <div class="brand-tag">Business Credit &amp; Funding</div>
     </div>
   </div>
 
   <!-- Main content -->
   <div class="card">
 
-    <div class="badge">AI Pre-Qualification</div>
+    <div class="live-badge"><span class="live-dot"></span> Sharon is Available Now</div>
 
-    <h1>Meet <span>Sharon,</span><br>Your Funding Advisor</h1>
+    <h1>Is Your Business<br><span class="gold">Ready for Funding?</span></h1>
 
-    <p class="subtitle">Talk to Sharon to find out if your business qualifies for funding. Quick, confidential, and zero commitment required.</p>
+    <p class="subtitle">Enter your number below and Sharon — our AI funding advisor — will call you right now to find out in under 5 minutes.</p>
 
     <!-- Agent card -->
     <div class="agent-card">
-      <div class="agent-avatar"><img src="logo.jpg" alt="Sharon" /></div>
+      <div class="agent-avatar"><img src="logo.jpg" alt="Sharon Cash" /></div>
       <div>
         <div class="agent-name">Sharon Cash</div>
         <div class="agent-title">AI Funding Advisor · Town Mayor Financial</div>
-        <div class="agent-status">Ready to connect</div>
+        <div class="agent-status">● Available · Calls back in &lt;60 seconds</div>
       </div>
     </div>
 
-    <!-- CTA -->
-    <a href="tel:+14153600243" class="cta-btn">📞 Call Sharon Now</a>
-    <div class="cta-sub">2–5 minutes &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Confidential</div>
+    <!-- Call form -->
+    <div class="call-form">
+      <div class="input-label">Your phone number</div>
+      <input
+        type="tel"
+        id="phoneInput"
+        class="phone-input"
+        placeholder="(510) 555-0100"
+        inputmode="tel"
+        autocomplete="tel"
+      />
+      <button class="cta-btn" id="callBtn" onclick="requestCall()">
+        📞 &nbsp;Have Sharon Call Me Now
+      </button>
+    </div>
 
-    <!-- Or text -->
-    <a href="sms:+14153600243" class="phone-link">💬 Text Sharon instead → (415) 360-0243</a>
+    <div class="cta-sub">No credit pull &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; 2–5 minutes</div>
+
+    <!-- Status -->
+    <div class="status-msg" id="statusMsg"></div>
+
+    <div class="divider">or</div>
+
+    <!-- Secondary: direct call -->
+    <a href="tel:+14156609459" class="secondary-btn">Call Sharon Directly → (415) 660-9459</a>
 
     <!-- Steps -->
+    <div class="steps-label">How it works</div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-text">
-          <strong>Quick intro</strong>
-          Sharon will introduce herself and ask about your business type and goals.
+          <strong>Sharon calls you in under a minute</strong>
+          She'll introduce herself and confirm you're ready to talk.
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-text">
-          <strong>A few questions</strong>
-          Time in business, monthly revenue, and what funding you're looking for.
+          <strong>Quick 3-question qualifier</strong>
+          Time in business, monthly revenue, what funding you're looking for.
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-text">
-          <strong>Get your results</strong>
-          If you qualify, Sharon connects you directly with Shake for next steps.
+          <strong>Get your answer</strong>
+          If you qualify, Sharon connects you with Shake for your funding roadmap.
         </div>
       </div>
     </div>
@@ -367,8 +434,9 @@
     <!-- Reassurance pills -->
     <div class="pills">
       <div class="pill">⚡ No credit pull</div>
-      <div class="pill">🔒 100% confidential</div>
-      <div class="pill">⏱ 2–5 minutes</div>
+      <div class="pill">🔒 Confidential</div>
+      <div class="pill">⏱ Under 5 min</div>
+      <div class="pill">✅ Free consult</div>
     </div>
 
   </div>
@@ -377,9 +445,80 @@
   <footer>
     © 2026 Town Mayor Financial &nbsp;·&nbsp;
     <a href="mailto:shake@townmayorfinancial.com">shake@townmayorfinancial.com</a>
-    &nbsp;·&nbsp; (415) 360-1544 &nbsp;·&nbsp;
-    Business Credit Solutions
+    &nbsp;·&nbsp; (415) 360-1544
   </footer>
+
+  <script>
+    function formatPhone(val) {
+      const digits = val.replace(/\D/g, '');
+      if (digits.length <= 3) return digits;
+      if (digits.length <= 6) return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+      return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6,10)}`;
+    }
+
+    const phoneInput = document.getElementById('phoneInput');
+    phoneInput.addEventListener('input', function() {
+      const pos = this.selectionStart;
+      const raw = this.value.replace(/\D/g, '').slice(0, 10);
+      this.value = formatPhone(raw);
+    });
+
+    async function requestCall() {
+      const btn = document.getElementById('callBtn');
+      const statusEl = document.getElementById('statusMsg');
+      const raw = phoneInput.value.replace(/\D/g, '');
+
+      if (raw.length < 10) {
+        statusEl.className = 'status-msg error';
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'Please enter a valid 10-digit phone number.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '⏳  Connecting Sharon...';
+      statusEl.style.display = 'none';
+
+      const phone = '+1' + raw;
+
+      try {
+        const res = await fetch('https://api.bland.ai/v1/calls', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'org_6679ad196048f7fb74e9fcb4e8a876ca7f298b0975d76ada7d026096e734145ce5dcf9b52a15c8aca7f169'
+          },
+          body: JSON.stringify({
+            phone_number: phone,
+            from: '+14156609459',
+            task: 'You are Sharon Cash, a warm and professional AI funding advisor for Town Mayor Financial. Your job is to qualify this prospect for business credit and funding. Ask: (1) How long have they been in business? (2) What is their approximate monthly revenue? (3) What type of funding are they looking for? If they qualify (6+ months in business, any revenue), tell them a specialist named Shake will follow up with their personalized funding roadmap within 24 hours. Be warm, confident, and concise. Keep the call under 5 minutes.',
+            voice: '78982ab1-6a3f-4320-97f5-73bdb853f73d',
+            wait_for_greeting: false,
+            record: true,
+            max_duration: 8,
+            answered_by_enabled: false
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.status === 'success' || data.call_id) {
+          btn.textContent = '✅ Sharon is calling you now!';
+          statusEl.className = 'status-msg success';
+          statusEl.style.display = 'block';
+          statusEl.textContent = '📱 Sharon is dialing your number now. Answer in the next 60 seconds!';
+        } else {
+          throw new Error(data.message || 'Call failed');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = '📞 Have Sharon Call Me Now';
+        statusEl.className = 'status-msg error';
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'Something went wrong. Call Sharon directly: (415) 660-9459';
+      }
+    }
+  </script>
 
 </body>
 </html>
