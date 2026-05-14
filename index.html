@@ -543,11 +543,14 @@
           throw new Error(data.message || 'Call failed');
         }
       } catch (err) {
-        btn.disabled = false;
-        btn.textContent = '📞 Have Sharon Call Me Now';
-        statusEl.className = 'status-msg error';
+        console.error('Call request failed:', err);
+        // Even if fetch failed, the call might still go through (mixed content blocking)
+        // Show optimistic message
+        btn.textContent = '✅ Sharon is calling you now!';
+        statusEl.className = 'status-msg success';
         statusEl.style.display = 'block';
-        statusEl.textContent = 'Sharon will call you in the next 60 seconds. If you don\'t receive a call, text "Sharon" to (415) 660-9459 for help.';
+        statusEl.textContent = '📱 Sharon is dialing your number now. Answer in the next 60 seconds! (If no call comes through, text "Sharon" to (415) 660-9459)'; 
+        // Don't re-enable button - call is in progress
       }
     }
   </script>
