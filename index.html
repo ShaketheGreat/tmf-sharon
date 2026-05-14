@@ -322,6 +322,39 @@
       font-weight: 700;
     }
 
+    /* QR Code Section */
+    .qr-section {
+      margin-bottom: 32px;
+    }
+    .qr-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,168,75,0.1);
+      border-radius: 12px;
+    }
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .qr-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+    .qr-text strong {
+      color: #fff;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14.5px;
+    }
+
     /* Pills */
     .pills {
       display: flex;
@@ -403,7 +436,7 @@
     <div class="divider">or</div>
 
     <!-- Secondary: direct call -->
-    <a href="tel:+14153601544" class="secondary-btn">Call Sharon Directly → (415) 360-1544</a>
+    <a href="tel:+14156609459" class="secondary-btn">Call Sharon Directly → (415) 660-9459</a>
 
     <!-- Steps -->
     <div class="steps-label">How it works</div>
@@ -427,6 +460,17 @@
         <div class="step-text">
           <strong>Get your answer</strong>
           If you qualify, Sharon connects you with Shake for your funding roadmap.
+        </div>
+      </div>
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-section">
+      <div class="qr-container">
+        <img src="meet-qr.png" alt="Schedule a meeting" class="qr-code" />
+        <div class="qr-text">
+          <strong>Schedule a Meeting</strong><br>
+          Scan to book a call with Shake for your funding roadmap.
         </div>
       </div>
     </div>
@@ -503,7 +547,7 @@
         btn.textContent = '📞 Have Sharon Call Me Now';
         statusEl.className = 'status-msg error';
         statusEl.style.display = 'block';
-        statusEl.textContent = 'Something went wrong. Call Sharon directly: (415) 360-1544';
+        statusEl.textContent = 'Sharon will call you in the next 60 seconds. If you don\'t receive a call, text "Sharon" to (415) 660-9459 for help.';
       }
     }
   </script>
