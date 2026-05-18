@@ -341,6 +341,12 @@
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.1);
       flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .qr-code:hover {
+      border-color: rgba(200,168,75,0.5);
+      transform: scale(1.02);
     }
     .qr-text {
       font-size: 13px;
@@ -467,7 +473,9 @@
     <!-- QR Code -->
     <div class="qr-section">
       <div class="qr-container">
-        <img src="meet-qr.png" alt="Schedule a meeting" class="qr-code" />
+        <a href="https://calendly.com/townmayorfintech/30min" target="_blank" rel="noopener noreferrer">
+          <img src="meet-qr.png" alt="Schedule a meeting" class="qr-code" />
+        </a>
         <div class="qr-text">
           <strong>Schedule a Meeting</strong><br>
           Scan to book a call with Shake for your funding roadmap.
